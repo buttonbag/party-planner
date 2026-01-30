@@ -71,8 +71,21 @@ const PartiesList = () => {
 
 // party component showing all the information about the selected party
 const PartyDetails = () => {
-  // console.log(partyDetails);
-  
+  if (!state.selectedParty) {
+    const $p = document.createElement(`p`);
+    $p.textContent = `Please select a party to attend. \n It is your birthday.`;
+    return $p;
+  }
+
+  const $section = document.createElement(`section`);
+  $section.innerHTML = `
+    <h3>${state.selectedParty.name} #${state.selectedParty.id}</h3>
+    <p class="date">${state.selectedParty.date}</p>
+    <p class="location">${state.selectedParty.location}</p>
+    <p class="description">${state.selectedParty.description}</p>
+  `;
+
+  return $section;
 }
 
 
@@ -100,7 +113,7 @@ const render = () => {
   `;
 
   $app.querySelector(`UpcomingParties`).replaceWith(PartiesList());
-  // $app.querySelector(`PartyDetails`).replaceWith(PartyDetails());
+  $app.querySelector(`PartyDetails`).replaceWith(PartyDetails());
 }
 
 const init = async () => {

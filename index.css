@@ -10,18 +10,27 @@ h1 {
 }
 
 main {
-  display: grid;
-  gap: 1rem;
+  display: flex;
 }
 
 section {
   padding: 0 1rem;
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+section > section {
+  padding: 0;
+  display: flex;
+  gap: 2rem;
 }
 
 .lineup {
+  display: flex;
+  flex-direction: column;
   list-style: none;
-  display: grid;
-  gap: 1ch;
+  gap: 1rem;
 }
 
 .lineup a {
@@ -39,18 +48,9 @@ section {
   background: #eee;
 }
 
-.artist {
-  display: grid;
-  gap: 1ch;
-}
 
-img {
-  max-width: 100%;
-  object-fit: contain;
-}
-
-@media (width > 600px) {
-  main {
-    grid-template-columns: 1fr 1fr;
-  }
+.date,
+.location,
+.description {
+  padding: 2rem, 0;
 }
